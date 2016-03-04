@@ -16,7 +16,7 @@ alias lf='ls -lg'
 alias rm='rm -i'
 
 
-for BASHRCFILE in `find .dotfiles -name "bashrc"`
+for BASHRCFILE in `find $HOME/.dotfiles -name "bashrc"`
 do
   [ -f "$BASHRCFILE" ] && source "$BASHRCFILE"
 done
