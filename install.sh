@@ -12,13 +12,39 @@ done
 DOTFILEDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 #############################
 
-# export DOTFILEDIR=`$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )`
+# create
 echo 'export DOTFILEDIR='$DOTFILEDIR > $HOME/.bashrc
 # symbolically link the .bashrc file
-echo 'source '$DOTFILEDIR'/master_bashrc.sh' >> $HOME/.bashrc
+echo 'source '$DOTFILEDIR'/bashrc' >> $HOME/.bashrc
 
 # for cross-platform compatibility, we also create a .bash_profile that
 # sources from .bashrc
 echo 'source ~/.bashrc' > $HOME/.bash_profile
+
+
+# find and setup package manager
+if [ "$(uname)" == "Darwin" ]; then
+    # TODO code to install homebrew essentials
+    # and X-Code tools as required
+    :
+    export pkgman='brew'
+fi
+if [ "$(uname)" == "Linux" ]; then
+    # apt-get update
+    # apt-get upgrade -y
+    if hash apt-get 2>/dev/null; then
+        export pkgman='apt-get'
+    elif hash yum 2>/dev/null; then
+        export pkgman='yum'
+    fi
+fi
+
+# basic installations to ensure tool are available
+eval $pkgman install -y curl git
+
+for INSTALLFILE in `find $DOTFILEDIR -mindepth 2 -name "install.sh"`
+do
+    source "$INSTALLFILE"
+done
 
 source $HOME/.bashrc

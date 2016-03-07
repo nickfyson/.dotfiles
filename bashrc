@@ -16,7 +16,7 @@ alias lf='ls -lg'
 alias rm='rm -i'
 
 
-for BASHRCFILE in `find $DOTFILEDIR -name "bashrc"`
+for BASHRCFILE in `find $DOTFILEDIR -mindepth 2 -name "bashrc"`
 do
-  [ -f "$BASHRCFILE" ] && source "$BASHRCFILE"
+    [ -f "$BASHRCFILE" ] && source "$BASHRCFILE"
 done
