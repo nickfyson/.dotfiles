@@ -2,14 +2,17 @@
 
 if [ "$(uname)" == "Darwin" ]; then
     brew install macvim --override-system-vim
+    brew install -y cmake
 fi
 
 if [ "$(uname)" == "Linux" ]; then
 
     if hash apt-get 2>/dev/null; then
         apt-get install -y vim-nox
+        apt-get install -y cmake
     elif hash yum 2>/dev/null; then
         yum install -y vim-nox
+        yum install -y cmake
     fi
 
 fi
