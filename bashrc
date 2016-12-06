@@ -2,6 +2,15 @@
 # define custom prompt
 export PS1="\[\e[34;1m\]\h \[\e[0;31m\]\W\[\e[m\] ☕  "
 
+# bind the arrow keys so that they can be used to search the history
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+bind '"\e[C":forward-char'
+bind '"\e[D":backward-char'
+
+# make the history huge so there's more to search
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000000
 
 # set default editor
 export EDITOR='vim'
