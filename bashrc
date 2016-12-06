@@ -24,6 +24,8 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 alias lf='ls -lg'
 alias rm='rm -i'
 
+alias ll="ls -lahL"
+alias con="tail -40 -f /var/log/system.log"
 
 for BASHRCFILE in `find $DOTFILEDIR -mindepth 2 -name "bashrc"`
 do
