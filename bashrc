@@ -27,6 +27,11 @@ alias rm='rm -i'
 alias ll="ls -lahL"
 alias con="tail -40 -f /var/log/system.log"
 
+# enable bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
 for BASHRCFILE in `find $DOTFILEDIR -mindepth 2 -name "bashrc"`
 do
     [ -f "$BASHRCFILE" ] && source "$BASHRCFILE"
