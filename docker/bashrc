@@ -1,7 +1,5 @@
 
 if hash docker-machine 2>/dev/null; then
-    # Configure shell for docker
-    eval "$(docker-machine env default </dev/null)"
 
     drmall ()
     {
