@@ -76,6 +76,7 @@ NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'svermeulen/vim-easyclip'
 
+NeoBundle 'hashivim/vim-terraform'
 
 
 call neobundle#end()
