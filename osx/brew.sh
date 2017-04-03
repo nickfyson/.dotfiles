@@ -30,24 +30,24 @@ brew install homebrew/dupes/grep
 #
 brew install wget
 brew install python
-brew install fish
+# brew install fish
 brew install caskroom/cask/brew-cask
 #
 # Some cask packages that I like.
 #
-# brew cask install dropbox
-# brew cask install alfred
+brew cask install dropbox
+brew cask install alfred
 brew cask install google-chrome
 # brew cask install inkscape
 brew cask install xquartz
-# brew cask install virtualbox
+brew cask install virtualbox
 # brew cask install flux
 brew cask install skype
 # brew cask install transmission
 # brew cask install spotify
-# brew cask install slack
+brew cask install slack
 brew cask install transmit
-# brew cask install iterm2
+brew cask install iterm2
 brew cask install vlc
 brew cask install nvalt
 brew cask install caffeine
