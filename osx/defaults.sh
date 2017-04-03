@@ -178,6 +178,9 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict General -bool true OpenWith -bool true Privileges -bool true
 
+# always show the Library folder
+chflags nohidden ~/Library/
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
