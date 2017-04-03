@@ -31,6 +31,7 @@ brew install homebrew/dupes/grep
 brew install wget
 brew install python
 # brew install fish
+brew install git
 brew install caskroom/cask/brew-cask
 #
 # Some cask packages that I like.
@@ -51,7 +52,22 @@ brew cask install iterm2
 brew cask install vlc
 brew cask install nvalt
 brew cask install caffeine
-brew cask install sublime-text
+
+brew tap caskroom/versions
+brew cask install sublime-text3
+
+brew cask install omnifocus
+brew cask install 1password
+brew cask install docker
+brew cask install evernote
+brew cask install superduper
+brew cask install java
+brew cask install marked
+
+brew cask install the-unarchiver
+
+brew cask install vagrant
+
 #
 #Link alfred with apps
 brew cask alfred link
