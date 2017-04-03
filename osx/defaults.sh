@@ -197,6 +197,15 @@ defaults write com.apple.dock showhidden -bool true
 # No bouncing icons
 # defaults write com.apple.dock no-bouncing -bool true
 
+# Move the dock to the left of the screen
+defaults write com.apple.dock orientation -string  "left"
+
+# make the icon size smaller
+defaults write com.apple.dock tilesize -integer 32
+
+# make it so the dock cannot be moved
+defaults write com.apple.Dock position-immutable -bool yes
+
 ###############################################################################
 # Dashboard                                                                   #
 ###############################################################################
