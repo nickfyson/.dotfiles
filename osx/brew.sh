@@ -33,6 +33,13 @@ brew install python
 # brew install fish
 brew install git
 brew install caskroom/cask/brew-cask
+
+brew install gradle
+
+brew install youtube-dl
+brew install ffmpeg
+brew install imagemagick
+
 #
 # Some cask packages that I like.
 #
@@ -67,6 +74,8 @@ brew cask install marked
 brew cask install the-unarchiver
 
 brew cask install vagrant
+
+brew cask install fantastical
 
 #
 #Link alfred with apps
