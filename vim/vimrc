@@ -78,7 +78,6 @@ NeoBundle 'svermeulen/vim-easyclip'
 
 NeoBundle 'hashivim/vim-terraform'
 
-
 call neobundle#end()
 
 " Required:
@@ -333,4 +332,6 @@ set scrolloff=4
 autocmd BufWritePre * :%s/\s\+$//e
 
 
+" enable preferred commenting style for terraform file formats
+call tcomment#DefineType('terraform', '# %s')
 
