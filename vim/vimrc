@@ -38,7 +38,7 @@ NeoBundle 'Valloric/YouCompleteMe', {
 
 NeoBundle 'wincent/command-t', {
     \ 'build': {
-    \   'mac': 'sh -c "cd ruby/command-t && ruby extconf.rb && make"',
+    \   'mac': 'sh -c "cd ruby/command-t/ext/command-t && ruby extconf.rb && make"',
     \   'linux': 'sh -c "cd ruby/command-t && ruby extconf.rb && make"',
     \  }
     \}
