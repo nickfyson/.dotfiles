@@ -1,7 +1,7 @@
 
 # define custom prompt
-# export PS1="\[\e[34;1m\]\h \[\e[0;31m\]\W\[\e[m\] ☕  "
-export PS1="\[\e[34;1m\]\h \[\e[0;31m\]\W\[\e[m\] "
+export PS1="\[\e[34;1m\]\h \[\e[0;31m\]\W\[\e[m\] ☕  "
+# export PS1="\[\e[34;1m\]\h \[\e[0;31m\]\W\[\e[m\] "
 
 # bind the arrow keys so that they can be used to search the history
 bind '"\e[A":history-search-backward'
