@@ -94,7 +94,8 @@ NeoBundleCheck
 
 " replacing unite with command-t
 
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-[> :Files<CR>
 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
