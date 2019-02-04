@@ -78,6 +78,8 @@ NeoBundle 'svermeulen/vim-easyclip'
 
 NeoBundle 'hashivim/vim-terraform'
 
+NeoBundle 'ambv/black'
+
 call neobundle#end()
 
 " Required:
@@ -178,7 +180,7 @@ set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
 ":map <C-p> :w<Bar>execute 'silent !tmux send-keys -t right "python %" C-m'<Bar>redraw!<C-M>
-map <Leader>p :w<Bar>execute 'silent !tmux send-keys -t .-1 C-p C-m'<Bar>redraw!<C-M>
+map <Leader>p :w<Bar>execute 'silent !tmux send-keys -t .-1 C-c C-p C-m'<Bar>redraw!<C-M>
 
 " prevent vim from ever writing a backup file (just annoying)
 set nobackup
@@ -331,5 +333,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 
 " enable preferred commenting style for terraform file formats
-call tcomment#DefineType('terraform', '# %s')
+call tcomment#type#Define('terraform', '# %s')
+
+" associated pebble files with HTML syntax highlighting
+au BufRead,BufNewFile *.peb set filetype=html
 
