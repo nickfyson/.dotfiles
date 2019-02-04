@@ -36,12 +36,12 @@ NeoBundle 'Valloric/YouCompleteMe', {
             \    },
             \ }
 
-NeoBundle 'wincent/command-t', {
+NeoBundle 'junegunn/fzf', {
     \ 'build': {
-    \   'mac': 'sh -c "cd ruby/command-t/ext/command-t && ruby extconf.rb && make"',
-    \   'linux': 'sh -c "cd ruby/command-t && ruby extconf.rb && make"',
+    \  'mac': './install --all',
     \  }
     \}
+NeoBundle 'junegunn/fzf.vim'
 
 NeoBundle 'JuliaLang/julia-vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -91,10 +91,8 @@ NeoBundleCheck
 
 
 " replacing unite with command-t
-nnoremap <silent> <C-p> :CommandT<CR>
 
-
-
+nnoremap <C-p> :Files<CR>
 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
