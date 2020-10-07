@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+sudo chsh -s $(which zsh) `whoami`
+
 cd "$(dirname "$0")"
 ./script/setup
