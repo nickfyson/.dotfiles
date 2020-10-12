@@ -1,0 +1,14 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+
+" git
+Plug 'tpope/vim-fugitive'
+
+" processes plugin
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+" code completion engine
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+
+call plug#end()
