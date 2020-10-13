@@ -11,4 +11,161 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " code completion engine
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'easymotion/vim-easymotion'
+Plug 'tomtom/tcomment_vim'
+Plug 'hdima/python-syntax'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdtree'
+
+" syntax checking
+Plug 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
+
+Plug 'flazz/vim-colorschemes'
+
+" simplified clipboard functionality
+Plug 'tpope/vim-repeat'
+Plug 'svermeulen/vim-easyclip'
+
+" automatic closing of stuff
+Plug 'Raimondi/delimitMate'
+
 call plug#end()
+
+"== GUIafy the VIM terminal interface =="
+set nocompatible
+set mouse=a
+set number
+set visualbell
+
+" bind file-finding command from fzf
+nnoremap <c-p> :GFiles<CR>
+" nnoremap <c-o> :Files<CR>
+
+" customise in-file searching and navigation
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+colorscheme twilight256
+
+"== Indentation =="
+filetype plugin indent on
+set autoindent
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set backspace=indent,eol,start
+
+"Map the tab key in visual and normal mode to indent code"
+vmap <tab> >gv
+vmap <s-tab> <gvd
+nmap <tab> I<tab><esc>
+nmap <s-tab> ^i<bs><esc>
+
+set showmatch
+
+"== Searching =="
+set smartcase
+set incsearch
+set hlsearch
+
+" Only do this part when compiled with support for autocommands "
+if has("autocmd")
+
+  " Syntax of these languages is fussy over tabs Vs spaces "
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+  " Customisations based on house-style (arbitrary) "
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+
+  " Treat .rss files as XML "
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+  " Automatically set linebreak when writing prose
+  autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+  autocmd FileType markdown setlocal wrap linebreak nolist foldlevel=99 " sw=4 ts=4
+
+endif
+
+"=== custom binding to rerun last shell command in bottom-right tmux pane==="
+map <Leader>p :w<Bar>execute 'silent !tmux send-keys -t .-1 C-c C-p C-m'<Bar>redraw!<C-M>
+
+" prevent vim from ever writing a backup file (just annoying)
+set nobackup
+set noswapfile
+
+" set some python highlighting options
+let python_highlight_space_errors = 0
+let python_highlight_all = 1
+"let python_highlight_builtin_objs = 1
+
+" use CR to clear search highlighting
+nnoremap <CR> :noh<CR><CR>
+
+" save changes automatically when closing
+set autowrite
+
+" bind to the system clipboard
+if has("clipboard")
+    set clipboard=unnamed
+    set clipboard+=unnamedplus
+endif
+
+
+
+" Easier split navigation
+"" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <c-k> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-h> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+
+" syntax checking
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" permanently enable the gutter, and make it invisible
+augroup mine
+    au BufWinEnter * sign define mysign
+    au BufWinEnter * exe "sign place 1337 line=1 name=mysign buffer=" . bufnr('%')
+augroup END
+highlight SignColumn ctermbg=black
+
+"prevent the redrawing of window from putting only one line on screen
+set scrolloff=4
+
+" Show trailing whitepace and spaces before a tab:
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+autocmd BufWritePre * :%s/\s\+$//e
+
+" nerdtree for file browsing
+map <Leader>n :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
