@@ -9,7 +9,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 " code completion engine
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " currently disabled due to problems with codespaces
+
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
