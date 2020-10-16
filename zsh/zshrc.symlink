@@ -51,5 +51,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 bindkey \^U backward-kill-line
 
-# ensure the ssh-key added
-ssh-add
+# ensure the default ssh-key is added to the agent
+if ! (ssh-add -l | grep -qe `ssh-keygen -lf "$HOME/.ssh/id_rsa" | awk '{print $2}'`); then
+  ssh-add $HOME/.ssh/id_rsa
+fi
